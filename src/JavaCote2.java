@@ -16,11 +16,11 @@ public class JavaCote2 {
         for (char x: str.toCharArray()) {
             // 대문자면 소문자를 나타내고
             if(x >= 65 && x <= 90){
-                answer += Character.toLowerCase(x);
+                answer += (char) (x += 32);
             }else{
                 // x >= 97 && x <= 122
                 // 소문자면 대문자로 나타내라
-                answer += Character.toUpperCase(x);
+                answer += (char) (x -= 32);
             }
         }
         return answer;
