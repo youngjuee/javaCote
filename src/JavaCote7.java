@@ -15,10 +15,20 @@ public class JavaCote7 {
 
         return answer;
     }
+
+    public String solution2(String str){
+        String answer = "YES";
+        String tmp = new StringBuilder(str).reverse().toString();
+        if(!str.equalsIgnoreCase(tmp)){
+            return "No";
+        }
+        System.out.println(tmp);
+        return answer;
+    }
     public static void main(String[] args) {
 
         JavaCote7 javaCote7 = new JavaCote7();
 
-        System.out.println(javaCote7.solution("gooG"));
+        System.out.println(javaCote7.solution2("gooG"));
     }
 }
