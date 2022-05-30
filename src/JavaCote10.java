@@ -1,12 +1,16 @@
 import java.util.Arrays;
 
 public class JavaCote10 {
-    public String solution(String phone_number) {
-        String answer = "";
-        String sp = phone_number.substring(0, phone_number.length()-4);
-        String lit = phone_number.substring(phone_number.length()-4);
-        sp = "*".repeat(sp.length());
-        answer = sp+lit;
+    // 하샤드수
+    public boolean solution(int x) {
+        boolean answer = true;
+        String st = Integer.toString(x);
+        char[] ch = st.toCharArray();
+        int sum = 0;
+        for(int i=0; i< ch.length; i++){
+            sum += Integer.parseInt(String.valueOf(ch[i]));
+        }
+        if(x % sum != 0) answer = false;
         return answer;
     }
 
@@ -14,6 +18,6 @@ public class JavaCote10 {
     public static void main(String[] args) {
         JavaCote10 javaCote10 = new JavaCote10();
 
-        System.out.println(javaCote10.solution("01033334444"));
+        System.out.println(javaCote10.solution(144));
     }
 }
