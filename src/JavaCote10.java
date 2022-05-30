@@ -1,16 +1,14 @@
 import java.util.Arrays;
 
 public class JavaCote10 {
-    // 하샤드수
-    public boolean solution(int x) {
-        boolean answer = true;
-        String st = Integer.toString(x);
-        char[] ch = st.toCharArray();
-        int sum = 0;
-        for(int i=0; i< ch.length; i++){
-            sum += Integer.parseInt(String.valueOf(ch[i]));
+    // 평균값 구하기
+    public double solution(int[] arr) {
+        double answer = 0;
+        double sum = 0;
+        for(int i = 0; i < arr.length; i++){
+            sum += arr[i];
         }
-        if(x % sum != 0) answer = false;
+        answer = sum / arr.length;
         return answer;
     }
 
@@ -18,6 +16,6 @@ public class JavaCote10 {
     public static void main(String[] args) {
         JavaCote10 javaCote10 = new JavaCote10();
 
-        System.out.println(javaCote10.solution(144));
+        System.out.println(javaCote10.solution(new int[]{1, 2, 3, 4}));
     }
 }
