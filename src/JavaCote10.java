@@ -23,10 +23,19 @@ public class JavaCote10 {
         return answer;
     }
 
+    public String solution2(int num) {
+        String answer = "Odd";
+        num = Math.abs(num);
+        if(num % 2== 0 && num >= Integer.MIN_VALUE && num <= Integer.MAX_VALUE){
+            answer = "Even";
+        }
+
+        return answer;
+    }
 
     public static void main(String[] args) {
         JavaCote10 javaCote10 = new JavaCote10();
 
-        System.out.println(Arrays.toString(javaCote10.solution(3,12)));
+        System.out.println(javaCote10.solution2(-1));
     }
 }
