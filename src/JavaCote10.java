@@ -1,14 +1,25 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class JavaCote10 {
-    // 평균값 구하기
-    public double solution(int[] arr) {
-        double answer = 0;
-        double sum = 0;
-        for(int i = 0; i < arr.length; i++){
-            sum += arr[i];
+    // 최대공약수와 최대공배수 구하기 (유클리드 호제법)
+    public int[] solution(int n, int m) {
+        int[] answer = new int[2];
+        int A = Integer.max(n,m);
+        int B = Integer.min(n,m);
+        int r = 1;
+        // 최대공약수
+        while(true){
+            r = A%B;
+            A = B;
+            if(r < 1){
+                answer[0] = B;
+                break;
+            }
+            B = r;
         }
-        answer = sum / arr.length;
+        // 최소공배수
+        answer[1] = n*m / answer[0];
         return answer;
     }
 
@@ -16,6 +27,6 @@ public class JavaCote10 {
     public static void main(String[] args) {
         JavaCote10 javaCote10 = new JavaCote10();
 
-        System.out.println(javaCote10.solution(new int[]{1, 2, 3, 4}));
+        System.out.println(Arrays.toString(javaCote10.solution(3,12)));
     }
 }
