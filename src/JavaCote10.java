@@ -1,5 +1,3 @@
-import javax.lang.model.type.ArrayType;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class JavaCote10 {
@@ -23,24 +21,23 @@ public class JavaCote10 {
         answer[1] = n*m / answer[0];
         return answer;
     }
+    
+    public long solution(long n) {
+        long answer = 0;
+        String st = Long.toString(n);
+        char[] ch = st.toCharArray();
 
-    public int[] solution(int[] arr) {
-        int[] answer;
-        if(arr.length > 1){
-            answer = new int[arr.length-1];
-            int min = Arrays.stream(arr).min().getAsInt();
-            int i = 0;
-            for(int j = 0; j <arr.length; j++){
-                if(arr[j] != min){
-                    answer[i] = arr[j];
-                    i++;
+
+        for(int i=0; i<ch.length; i++){
+            for(int j=0; j<ch.length; j++){
+                if(ch[i] > ch[j]){
+                    char temp = ch[i];
+                    ch[i] = ch[j];
+                    ch[j] = temp;
                 }
             }
-
-        }else{
-            answer = new int[1];
-            answer[0] = -1;
         }
+        answer = Long.parseLong(String.valueOf(ch));
 
         return answer;
     }
@@ -48,6 +45,6 @@ public class JavaCote10 {
     public static void main(String[] args) {
         JavaCote10 javaCote10 = new JavaCote10();
 
-        System.out.println(Arrays.toString(javaCote10.solution(new int[]{4,3,2,1})));
+        System.out.println(javaCote10.solution(118372));
     }
 }
