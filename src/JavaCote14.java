@@ -39,15 +39,29 @@ public class JavaCote14 {
         }
         return result;
     }
+
+    public int[] solution4(int num){
+        int[] result = new int[num];
+        result[0] = 1;
+        result[1] = 1;
+
+        for(int i = 2; i < num; i++){
+            result[i] = result[i-1]+result[i-2];
+        }
+        return result;
+    }
     public static void main(String[] args) {
         JavaCote14 javaCote14 = new JavaCote14();
-        // Array 1,2차원 배열 1. 큰수 출력하기
+        // Array(1, 2차원 배열) 1. 큰수 출력하기
         //System.out.println(javaCote14.solution( new int[]{7, 3, 9, 5, 6, 12}));
 
-        // Array 1,2차원 배열 2. 보이는 학생
+        // Array(1, 2차원 배열) 2. 보이는 학생
 //        System.out.println(javaCote14.solution2(new int[]{130, 135, 148, 140, 145, 150, 150, 153}));
 
-        // Array 1,2차원 배열 2. 보이는 학생
-        System.out.println(Arrays.toString(javaCote14.solution3(new int[]{2,3,3,1,3,}, new int[]{1,1,2,2,3})));
+        // Array(1, 2차원 배열) 3. 가위바위보
+//        System.out.println(Arrays.toString(javaCote14.solution3(new int[]{2,3,3,1,3,}, new int[]{1,1,2,2,3})));
+
+        // Array(1, 2차원 배열) 4. 피보나치 수열
+        System.out.println(Arrays.toString(javaCote14.solution4(10)));
     }
 }
