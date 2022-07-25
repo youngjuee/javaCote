@@ -39,12 +39,20 @@ public class JavaCote15 {
                 p2++;
             }
         }
-
-//        while(p1 < arr.length){answer.add(arr[p1++]);}
-//        while(p2 < arr2.length){answer.add(arr2[p2++]);}
-
         return answer;
     }
+
+    public int solution3(int[] arr){
+        int result = 0;
+        for(int i = 2; i < arr.length; i++){
+            if(result < arr[i-2]+arr[i-1]+arr[i]){
+                result = arr[i-2]+arr[i-1]+arr[i];
+            }
+
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         JavaCote15 javaCote15 = new JavaCote15();
 
@@ -54,8 +62,12 @@ public class JavaCote15 {
 //        }
 
         // 공통원소구하기
-        for(int x : javaCote15.solution2(new int[]{1,3,9,5,2}, new int[]{3,2,5,7,8})){
-            System.out.println(x+" ");
-        }
+//        for(int x : javaCote15.solution2(new int[]{1,3,9,5,2}, new int[]{3,2,5,7,8})){
+//            System.out.println(x+" ");
+//        }
+
+//        for(int x : javaCote15.solution3(new int[]{12, 15, 11, 20, 25, 10, 20, 19, 13, 15})){
+            System.out.println(javaCote15.solution3(new int[]{12, 15, 11, 20, 25, 10, 20, 19, 13, 15}));
+//        }
     }
 }
