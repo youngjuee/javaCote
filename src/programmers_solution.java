@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class programmers_solution {
 
@@ -68,6 +65,72 @@ public class programmers_solution {
             }
         }
         return answer.stream().mapToInt(Integer::intValue).toArray();
+    }
+
+//    없는숫자더하기
+    public int solution(int[] numbers) {
+        int answer = 0;
+        Arrays.sort(numbers);
+        for(int i = 0; i < 10; i++){
+            if(Arrays.binarySearch(numbers, i) < 0){
+
+                answer += i;
+            }
+        }
+
+        return answer;
+    }
+    //        코딩테스트 연습
+    //        탐욕법(Greedy)
+    //        체육복
+    public static int solution3(int n, int[] lost, int[] reserve) {
+
+        Map<Integer, Integer> reserveMap = new HashMap<Integer, Integer>();
+        Arrays.sort(lost);
+        List<Integer> lostList = new ArrayList<Integer>();
+
+        Arrays.sort(reserve);
+        int answer = n-lost.length;
+
+        for(int i = 0; i < reserve.length; i++) {
+            reserveMap.put(reserve[i], 1);
+        }
+        for(int i = 0; i < lost.length; i++) {
+            if(reserveMap.containsKey(lost[i])){
+                reserveMap.remove(lost[i]);
+                lost[i] = -1;
+                answer++;
+            }else {
+                lostList.add(lost[i]);
+            }
+        }
+
+
+        for(int i = 0; i < lost.length; i++) {
+            if(lost[i] != -1) {
+                if(reserveMap.containsKey(lost[i]-1)) {
+                    if(reserveMap.get(lost[i]-1) > 0) {
+                        reserveMap.replace(lost[i]-1, 0);
+                        if(lostList.contains(lost[i]-1)) {
+                            lostList.remove(lost[i]-1);
+                        }
+                        answer++;
+                        continue;
+                    }
+                }
+                if(reserveMap.containsKey(lost[i]+1)) {
+                    if(reserveMap.get(lost[i]+1) > 0) {
+                        reserveMap.replace(lost[i]+1, 0);
+                        if(lostList.contains(lost[i]+1)) {
+                            lostList.remove(lost[i]+1);
+                        }
+                        answer++;
+                    }
+                }
+            }
+
+        }
+        return answer;
     }
 
     public static void main(String[] args) {
