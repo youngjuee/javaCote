@@ -133,6 +133,38 @@ public class programmers_solution {
         return answer;
     }
 
+//    # 2019 카카오 개발자 겨울 인턴십 > 크레인 인형뽑기 게임
+    public static int solution4(int[][] board, int[] moves) {
+        int answer = 0;
+        List<Integer> putList = new LinkedList<Integer>();
+        int mNum = 0;
+        while(true) {
+            for(int i = 0; i < board.length; i++) {
+//        	for(int i = board.length-1; i > -1; i--) {
+                if(board[i][moves[mNum]-1] != 0) {
+                    putList.add(board[i][moves[mNum]-1]);
+                    board[i][moves[mNum]-1] = 0;
+//        			System.out.println("putList "+ putList);
+                    if(putList.size() > 1) {
+                        if(putList.get(putList.size()-2) == putList.get(putList.size()-1)) {
+                            putList.remove(putList.size()-2);
+                            putList.remove(putList.size()-1);
+                            answer += 2;
+                        }
+                    }
+                    break;
+                }
+            }
+            if(mNum >= moves.length-1) {
+                break;
+            }
+            mNum++;
+        }
+
+
+        return answer;
+    }
+
     public static void main(String[] args) {
         for(int j : solution(new String[]{"con", "ryan"}, new String[]{"ryan con", "ryan con", "ryan con", "ryan con"}, 2)) {
             System.out.println(j);
