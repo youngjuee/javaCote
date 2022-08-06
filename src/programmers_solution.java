@@ -165,10 +165,51 @@ public class programmers_solution {
         return answer;
     }
 
-    public static void main(String[] args) {
-        for(int j : solution(new String[]{"con", "ryan"}, new String[]{"ryan con", "ryan con", "ryan con", "ryan con"}, 2)) {
-            System.out.println(j);
+//    월간 코드 챌린지 시즌2 > 약수의 개수와 덧셈
+    public static int solution5(int left, int right) {
+        int answer = 0;
+        List<Integer> arrLeft = new ArrayList<>();
+        for(int i = left; i <= right; i++){
+            for(int j = 1; j <= i; j++){
+                if(i % j ==0) {
+                    arrLeft.add(i);
+                }
+            }
+            if(arrLeft.size() % 2 == 0){
+                answer += i;
+            }else{
+                answer -= i;
+            }
+            arrLeft.clear();
         }
 
+        return answer;
+    }
+
+//  Summer/Winter Coding(~2018) > 예산
+    public static int solution6(int[] d, int budget) {
+        int answer = 0;
+        int sum = 0;
+        Arrays.sort(d);
+        for(int i = 0; i <= d.length; i++){
+            sum += d[i];
+            answer++;
+            if(sum > budget){
+                answer--;
+                break;
+            }
+        }
+        return answer;
+    }
+
+
+
+    public static void main(String[] args) {
+//        for(int j : solution(new String[]{"con", "ryan"}, new String[]{"ryan con", "ryan con", "ryan con", "ryan con"}, 2)) {
+//            System.out.println(j);
+//        }
+//        System.out.println(solution5(13,17));
+//
+        System.out.println(solution6(new int[]{1,3,2,5,4}, 9));
     }
 }
