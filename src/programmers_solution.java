@@ -203,6 +203,24 @@ public class programmers_solution {
     }
 
 
+    public static int[] solution7(int[] numbers) {
+        ArrayList<Integer> dd = new ArrayList<Integer>();
+        for(int i = 0; i< numbers.length-1; i++){
+            for(int j = i+1; j< numbers.length; j++){
+                if(!dd.contains(numbers[i] + numbers[j])){
+                    dd.add( numbers[i] + numbers[j]);
+                }
+            }
+        }
+        int[] answer = new int[dd.size()];
+        Collections.sort(dd);
+        int i =0;
+        for(int j : dd) {
+            answer[i++] = j;
+        }
+        return answer;
+    }
+
 
     public static void main(String[] args) {
 //        for(int j : solution(new String[]{"con", "ryan"}, new String[]{"ryan con", "ryan con", "ryan con", "ryan con"}, 2)) {
@@ -210,6 +228,8 @@ public class programmers_solution {
 //        }
 //        System.out.println(solution5(13,17));
 //
-        System.out.println(solution6(new int[]{1,3,2,5,4}, 9));
+       // System.out.println(solution6(new int[]{1,3,2,5,4}, 9));
+
+        System.out.println(solution7(new int[]{2,1,3,4,1}));
     }
 }
