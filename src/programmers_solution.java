@@ -221,6 +221,27 @@ public class programmers_solution {
         return answer;
     }
 
+    //최소직사각형
+    public static int solution8(int[][] sizes) {
+        int answer = 0;
+        int right = 0;
+        int left = 0;
+        for(int i = 0; i <sizes.length; i++){
+            int max = Math.max(sizes[i][0], sizes[i][1]);
+            int min = Math.min(sizes[i][0], sizes[i][1]);
+            if(max > right){
+                right = max;
+            }
+
+            if(min > left){
+                left = min;
+            }
+        }
+        answer = right * left;
+        return answer;
+    }
+
+
 
     public static void main(String[] args) {
 //        for(int j : solution(new String[]{"con", "ryan"}, new String[]{"ryan con", "ryan con", "ryan con", "ryan con"}, 2)) {
