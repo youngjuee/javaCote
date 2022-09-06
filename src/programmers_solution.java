@@ -242,6 +242,28 @@ public class programmers_solution {
     }
 
 
+    public static boolean solution(String s) {
+        boolean answer = true;
+
+        Stack<Character> st = new Stack<>();
+        for(char c : s.toCharArray()){
+            if(')' == c){
+                if(st.isEmpty()){
+                    answer = false;
+                    break;
+                }
+                st.pop();
+            }else{
+                st.push(c);
+            }
+
+        }
+
+        if(!st.isEmpty()) answer = false;
+
+        return answer;
+    }
+
 
     public static void main(String[] args) {
 //        for(int j : solution(new String[]{"con", "ryan"}, new String[]{"ryan con", "ryan con", "ryan con", "ryan con"}, 2)) {
