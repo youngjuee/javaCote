@@ -1,16 +1,17 @@
 public class Recursive {
     public void DFS(int n){
-        if(n > 0){
-            DFS(n-1);
-            System.out.println(n);
+        if(n == 0){
+        }else{
+            DFS(n/2);
+            System.out.print(n%2);
         }
+
+
 
     }
 
-
     public static void main(String[] args) {
         Recursive T = new Recursive();
-        T.DFS(3);
-
+        T.DFS(11);
     }
 }
