@@ -21,6 +21,7 @@ public class Recursive {
 
     static int[] fibo;
     public int fibonacci(int n){
+        if(fibo[n] > 0) return fibo[n];
         if(n == 1) return fibo[1] = 1;
         if(n == 2) return fibo[2] = 1;
         else return fibo[n] = fibonacci(n-2) + fibonacci(n-1);
