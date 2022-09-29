@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class Solution {
     public int solution(int n, int mix, int k) {
@@ -89,6 +91,54 @@ public class Solution {
         answer++;
         DFS(begin, target, words);
         return cnt;
+    }
+
+
+    /*
+    * 20220929
+    * 완전탐색 소수찾기
+    * */
+
+
+    public boolean isPrime(int prime){
+        int sq = (int) Math.sqrt(prime);
+        if(prime == 0 || prime == 1){
+            return false;
+        }
+
+        for(int i = 2; i <= sq; i++){
+            if(prime % i == 0){
+                return false;
+
+            }
+        }
+
+        return true;
+    }
+
+    static HashSet<Integer> num = new HashSet<>();
+    public void recursive(String com, String others){
+        if(com != ""){
+            num.add(Integer.valueOf(com));
+        }
+        for(int i = 0; i < others.length(); i++){
+            recursive(com+others.charAt(i), others.substring(0,i)+ others.substring(i+1));
+        }
+
+    }
+
+
+    public int solution(String numbers) {
+        int answer = 0;
+        ArrayList<Integer> arr = new ArrayList<>();
+        recursive("", numbers);
+        for(int j : num){
+            System.out.println(j);
+            if(isPrime(j)){
+                answer++;
+            }
+        }
+        return answer;
     }
 
 
