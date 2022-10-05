@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.PriorityQueue;
 
 public class Solution {
     public int solution(int n, int mix, int k) {
@@ -138,6 +139,39 @@ public class Solution {
                 answer++;
             }
         }
+        return answer;
+    }
+
+
+
+    // priorityQueue사용 우선순위탐색
+    // 프로그래머스 더 맵게
+    public int solution(int[] scoville, int K) {
+        int answer = 0;
+        PriorityQueue<Integer> heap = new PriorityQueue<>();
+        for(int i = 0; i < scoville.length ; i++){
+            heap.add(scoville[i]);
+        }
+
+        while(!heap.isEmpty()){
+            if(heap.size() > 1){
+                if(heap.peek() < K){
+                    int sc = heap.poll() + (heap.poll() * 2);
+                    heap.add(sc);
+                    answer++;
+                }else{
+                    return answer;
+                }
+            }else{
+                if(heap.peek() > K){
+                    return 1;
+                }else{
+                    break;
+                }
+            }
+        }
+
+        answer = -1;
         return answer;
     }
 
