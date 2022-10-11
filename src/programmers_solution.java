@@ -265,7 +265,34 @@ public class programmers_solution {
     }
 
 
+    /**
+     * 월간 코드 챌린지 시즌1
+     * 이진 변환 반복하기
+     * 2022. 10. 11
+     */
+    public int[] solution221011(String s) {
+        int[] answer = {0,0};
 
+
+        //System.out.println();
+        while(s.length() > 1){
+            int len = s.length();
+            s = s.replace("0", "");
+            int ze = len - s.length();
+            len -= ze;
+            answer[1] += ze;
+            s = "";
+            answer[0]++;
+            //System.out.println(len);
+            while(len != 0){
+                s = len%2+s;
+                len = len / 2;
+            }
+            //System.out.println(s);
+        }
+
+        return answer;
+    }
 
 
 
