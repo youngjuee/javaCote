@@ -294,6 +294,22 @@ public class programmers_solution {
         return answer;
     }
 
+    /**
+     * 최솟값 만들기
+     * 2022. 10. 12
+     */
+    public int solution(int []A, int []B)
+    {
+        int answer = 0;
+        Arrays.sort(A);
+        Arrays.sort(B);
+        int j=1;
+        for(int i : A){
+            answer += i * B[B.length-j++];
+        }
+        return answer;
+    }
+
 
 
     public static void main(String[] args) {
