@@ -298,7 +298,7 @@ public class programmers_solution {
      * 최솟값 만들기
      * 2022. 10. 12
      */
-    public int solution(int []A, int []B)
+    public int solution221012(int []A, int []B)
     {
         int answer = 0;
         Arrays.sort(A);
@@ -309,6 +309,32 @@ public class programmers_solution {
         }
         return answer;
     }
+
+    /*
+    * 프로그래머스 JadenCase 문자열 만들기
+    * 2022. 10. 13
+    * */
+    public String solution221013(String s) {
+        String answer = "";
+        String[] sp = s.split("");
+
+        boolean i = true;
+        for(String ss: sp){
+            if(ss.equals(" ")) {
+                i = true;
+                answer += " ";
+            }else{
+                if(i){
+                    answer+= ss.toUpperCase();
+                    i=false;
+                }else{
+                    answer+= ss.toLowerCase();
+                }
+            }
+        }
+        return answer;
+    }
+
 
 
 
