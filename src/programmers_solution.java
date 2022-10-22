@@ -335,6 +335,41 @@ public class programmers_solution {
         return answer;
     }
 
+    /*
+    * 코딩테스트 연습 스택/큐 기능개발
+    * 2단계
+    * 2022. 10. 22
+    * */
+
+    public int[] solution221022(int[] progresses, int[] speeds) {
+        int[] answer = new int[100];
+        ArrayList<Integer> ans = new ArrayList<>();
+        Queue<Integer> qu = new LinkedList<>();
+        for(int k = 0; k < progresses.length; k++){
+            qu.offer(progresses[k]);
+        }
+        int i = 0;
+        int day = 1;
+
+        while(!qu.isEmpty()){
+            int inp = qu.peek() +( speeds[i] * day );
+            if(inp >= 100){
+                qu.remove();
+                i++;
+                answer[day] += 1;
+                continue;
+            }
+            day++;
+        }
+
+        for(int k : answer){
+            if(k != 0){
+                ans.add(k);
+            }
+        }
+
+        return ans.stream().mapToInt(Integer::intValue).toArray();
+    }
 
 
 
