@@ -2,8 +2,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.StringTokenizer;
 
 public class backjoon_test {
@@ -42,61 +40,114 @@ public class backjoon_test {
 //        System.out.println(count);
 //    }
 
+//    static int N;
+//    static int[][] aptdangi;
+//    static int cnt = 0;
+//    private static int dx[] = {0,0,-1,1};
+//    private static int dy[] = {-1,1,0,0};
+//    private static boolean[][] check;
+//    private static ArrayList<Integer> list = new ArrayList<>();
+//    public static void dfs(){
+//        for(int i = 1 ; i <= N ; i++){
+//            for(int j = 1 ; j <= N ; j++){
+//                if(aptdangi[i][j] == 1 && !check[i][j]){
+//                    cnt++;
+//                    search(i, j);
+//                    list.add(cnt);
+//                    cnt = 0;
+//                }
+//            }
+//        }
+//    }
+//
+//    public static void search(int i, int j){
+//        check[i][j] = true;
+//        for(int k = 0 ; k < 4 ; k++){
+//            int di = i + dx[k];
+//            int dj = j + dy[k];
+//            if(di >= 0 && dj >= 0 && di <= N && dj <= N){
+//                if(!check[di][dj] && aptdangi[di][dj] == 1){
+//                    check[di][dj] = true;
+//                    search(di, dj);
+//                    cnt++;
+//                }
+//            }
+//        }
+//    }
+//    public static void main(String[] args) throws IOException {
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        StringTokenizer st = new StringTokenizer(br.readLine());
+//        N = Integer.parseInt(st.nextToken());
+//        aptdangi = new int[N+1][N+1];
+//        check = new boolean[N+1][N+1];
+//        for(int i = 1; i <= N; i++){
+//            String[] ss = br.readLine().split("");
+//            for(int j = 1; j <= N; j++){
+//                aptdangi[i][j] = Integer.parseInt(ss[j-1]);
+//            }
+//        }
+//        dfs();
+//        Collections.sort(list);
+//        System.out.println(list.size());
+//        for(int i : list){
+//            System.out.println(i);
+//        }
+//
+//    }
+
+
+/* N과 M
+* 2020-11-03
+* */
+
     static int N;
-    static int[][] aptdangi;
-    static int cnt = 0;
-    private static int dx[] = {0,0,-1,1};
-    private static int dy[] = {-1,1,0,0};
-    private static boolean[][] check;
-    private static ArrayList<Integer> list = new ArrayList<>();
-    public static void dfs(){
-        for(int i = 1 ; i <= N ; i++){
-            for(int j = 1 ; j <= N ; j++){
-                if(aptdangi[i][j] == 1 && !check[i][j]){
-                    cnt++;
-                    search(i, j);
-                    list.add(cnt);
-                    cnt = 0;
-                }
+    static int M;
+    static int[] answer;
+    static boolean[] check;
+    public static void nAndM(int depth){
+        if(depth == M) {
+            for(int i = 0; i< depth; i++){
+                System.out.print(answer[i]+" ");
+            }
+            System.out.println();
+        }
+
+
+        for(int i = 1; i <= N; i++){
+            if(!check[i]){
+                check[i] = true;
+                answer[depth] = i;
+                nAndM(depth+1);
+                check[i] = false;
+
             }
         }
     }
 
-    public static void search(int i, int j){
-        check[i][j] = true;
-        for(int k = 0 ; k < 4 ; k++){
-            int di = i + dx[k];
-            int dj = j + dy[k];
-            if(di >= 0 && dj >= 0 && di <= N && dj <= N){
-                if(!check[di][dj] && aptdangi[di][dj] == 1){
-                    check[di][dj] = true;
-                    search(di, dj);
-                    cnt++;
-                }
-            }
-        }
-    }
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         N = Integer.parseInt(st.nextToken());
-        aptdangi = new int[N+1][N+1];
-        check = new boolean[N+1][N+1];
-        for(int i = 1; i <= N; i++){
-            String[] ss = br.readLine().split("");
-            for(int j = 1; j <= N; j++){
-                aptdangi[i][j] = Integer.parseInt(ss[j-1]);
-            }
-        }
-        dfs();
-        Collections.sort(list);
-        System.out.println(list.size());
-        for(int i : list){
-            System.out.println(i);
-        }
+        M = Integer.parseInt(st.nextToken());
+        answer = new int[N];
+        check = new boolean[N+1];
+        nAndM(0);
+
 
     }
+
+
 }
+
+
+
+
+
+
+
+
+
 
 
 // 백준 ABCDE
